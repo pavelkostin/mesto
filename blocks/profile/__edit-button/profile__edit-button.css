@@ -1,0 +1,15 @@
+.profile__edit-button {
+    max-width: 24px;
+    max-height: 24px;
+    margin-top: 37px;
+    margin-left: 18px;
+    border: solid 1px yellow;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .profile__edit-button {
+        margin-left: 10px;
+        margin-top: 8px;
+    }
+}

@@ -1,0 +1,20 @@
+.footer__mesto {
+    max-width: 318px;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color:#545454;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .footer__mesto {
+        max-width: 282px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
