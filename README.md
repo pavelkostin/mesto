@@ -12,4 +12,4 @@ Java Script
 
 Для запуска страницы требуется любой браузер
 
-Проект опубликован по ссылке: https://github.com/pavelkostin/mesto
+Проект опубликован по ссылке: https://pavelkostin.github.io/mesto/
