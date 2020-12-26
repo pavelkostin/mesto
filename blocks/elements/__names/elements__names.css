@@ -1,4 +1,4 @@
-.elements__name {
+.elements__names {
     font-family: Inter;
     font-size: 24px;
     font-style: normal;
@@ -6,11 +6,13 @@
     line-height: 29px;
     letter-spacing: 0em;
     text-align: left;
-    border: green solid 1px;
-    display: flex;
-    justify-content: space-between;
-
-    max-width: 246px;
+    
+    max-width: 190px;
     margin-top: 25px;
     margin-left: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
+

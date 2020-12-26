@@ -2,7 +2,6 @@
     max-width: 880px;
     margin: auto;
     display: grid;
-
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 17px;
@@ -13,10 +12,7 @@
 @media screen and (max-width: 1024px) {
     .elements {
         max-width: 282px;
-
-
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
-
     }
 }
