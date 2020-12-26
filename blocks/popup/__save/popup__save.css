@@ -11,7 +11,7 @@
     color: #FFFFFF;
     border-radius: 2px;
 
-    font-family: Inter;
+    font-family: "Inter", "Arial", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -26,7 +26,7 @@
 @media screen and (max-width: 1024px) {
     .popup__save {
         max-width: 238px;
-
+        margin-left: 22px;
     }
 }
 

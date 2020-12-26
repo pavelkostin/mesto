@@ -20,8 +20,8 @@ closeButton.addEventListener ('click', hidePopup);
 
 
 let formElement = document.querySelector ('.popup__window');
-let nameInput = document.querySelector ('.popup__p1');
-let jobInput = document.querySelector ('.popup__p2');
+let nameInput = document.querySelector ('.popup__name');
+let jobInput = document.querySelector ('.popup__job');
 
 let profileName = document.querySelector ('.profile__name');
 let profileJob = document.querySelector ('.profile__para');

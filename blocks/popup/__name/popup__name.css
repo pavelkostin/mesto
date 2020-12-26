@@ -1,5 +1,5 @@
-.popup__p2 {
-    font-family: Inter;
+.popup__name {
+    font-family: "Inter", "Arial", sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -14,5 +14,12 @@
     overflow: hidden;
     outline: none;
     border: none;
-    margin-top: 30px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .popup__name {
+        max-width: 238px;
+        margin-left: 22px;
+    }
 }
