@@ -12,12 +12,10 @@ let profileJob = document.querySelector ('.profile__para');
 function showPopup() {
     popup.classList.add('popup_opened');
 }
-editButton.addEventListener ('click', showPopup);
 
 function hidePopup() {
     popup.classList.remove('popup_opened');
 }
-closeButton.addEventListener ('click', hidePopup);
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -26,6 +24,9 @@ function handleFormSubmit(evt) {
     hidePopup();
 }
 
+
+editButton.addEventListener ('click', showPopup);
+closeButton.addEventListener ('click', hidePopup);
 formElement.addEventListener('submit', handleFormSubmit);
 
 

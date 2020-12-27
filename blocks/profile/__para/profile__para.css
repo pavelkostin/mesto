@@ -22,13 +22,3 @@
             text-align: center;   
         }
     }
-
-@media screen and (max-width: 320px) {
-    .profile__para {
-        margin-top: 0;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 17px;
-        text-align: center;
-    }
-}

@@ -5,10 +5,11 @@
     line-height: 29px;
     letter-spacing: 0em;
     text-align: left;
+    margin-top: 0;
     margin-bottom: 54px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 820px) {
     .popup__profile-edit {
     font-size: 18px;
     line-height: 22px;

@@ -21,6 +21,7 @@
 
 @media screen and (max-width: 820px) {
     .elements {
-        min-width: 282px;
+        max-width: 282px;
+        
     }
 }

@@ -28,5 +28,4 @@
 .profile__plus:hover {
     opacity: 80%;
     cursor: pointer;
-    transition: opacity .2s ease-in .2s;
 }
