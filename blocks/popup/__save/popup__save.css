@@ -2,16 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 36px;
     margin-top: 48px;
-    margin-bottom: 37px;
-    max-width: 358px;
-    height: 50px;
+    min-height: 50px;
+
     background-color: #000000;
     color: #FFFFFF;
+    
     border-radius: 2px;
-
-    font-family: "Inter", "Arial", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -21,13 +18,6 @@
 
     outline: none;
     border: none;
-}
-
-@media screen and (max-width: 1024px) {
-    .popup__save {
-        max-width: 238px;
-        margin-left: 22px;
-    }
 }
 
 .popup__save:hover {

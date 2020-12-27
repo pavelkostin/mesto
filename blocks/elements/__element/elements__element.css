@@ -1,7 +1,7 @@
 .elements__element {
 
-    width: 282px;
-    height: 361px;
+    min-width: 282px;
+
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;

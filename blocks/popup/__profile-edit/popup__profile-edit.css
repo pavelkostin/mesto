@@ -1,14 +1,10 @@
 .popup__profile-edit {
-    font-family: "Inter", "Arial", sans-serif;
     font-size: 24px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     line-height: 29px;
     letter-spacing: 0em;
     text-align: left;
-    max-width: 358px;
-    margin-left: 36px;
-    margin-top: 34px;
     margin-bottom: 54px;
 }
 
@@ -16,9 +12,6 @@
     .popup__profile-edit {
     font-size: 18px;
     line-height: 22px;
-    margin-top: 25px;
     margin-bottom: 75px;
-    display: flex;
-    margin-left: 22px;
     }
 }

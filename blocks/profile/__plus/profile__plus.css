@@ -15,7 +15,9 @@
 
 
 
-@media screen and (max-width: 1024px) {
+
+
+@media screen and (max-width: 820px) {
     .profile__plus  {
         margin-top: 36px;
         width: 282px;
@@ -23,8 +25,8 @@
     }
 }
 
-
 .profile__plus:hover {
     opacity: 80%;
     cursor: pointer;
+    transition: opacity .2s ease-in .2s;
 }

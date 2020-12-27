@@ -3,16 +3,18 @@
     margin: 0 auto;
     margin-top: 67px;
     padding-bottom: 60px;
-
-
 }
 
 @media screen and (max-width: 1024px) {
     .footer {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .footer {
         max-width: 282px;
         margin-top: 48px;
         padding-bottom: 36px;
-
-        
     }
 }
