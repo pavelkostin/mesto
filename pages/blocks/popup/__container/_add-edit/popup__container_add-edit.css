@@ -1,0 +1,10 @@
+.popup__container_add-edit {
+    width: 430px;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__container_add-edit {
+
+        width: 282px;
+    }
+}
