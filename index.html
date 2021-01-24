@@ -1,101 +1,80 @@
 <!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./pages/index.css" />
-        <title>Mesto</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_Mesto/5_sprint</title>
+    <link rel="stylesheet" href="./pages/style.css">
+</head>
+<body>
 
-    <body>
-        <div class="root">
-            <header class="header">
-                <img class="header__logo" src="./images/logo.svg" alt="логотип" />
-            </header>
-
-            <main>
-                <section class="profile">
-
-                    <div class="profile__buttons">
-                        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар" />
-                        <div class="profile__name-para">
-                            <h1 class="profile__name">Жак-Ив Кусто</h1>
-                            <button class="profile__edit-button" type="button"></button>
-                            <p class="profile__para">Исследователь океана</p>
-                        </div>
-                    </div>
-
-                    <button class="profile__plus" type="button"></button>
-
-                </section>
-
-                <section class="elements">
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/карачаевск.jpg" alt="Карачаевск" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Карачаевск</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/Эльбрус.jpg" alt="Гора Эльбрус" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Гора Эльбрус</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/Домбай_1.jpg" alt="Домбай" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Домбай</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/Эльбрус.jpg" alt="Гора Эльбрус" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Гора Эльбрус</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/Домбай_1.jpg" alt="Домбай" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Домбай</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-
-                    <div class="elements__element">
-                        <img class="elements__picture" src="./images/карачаевск.jpg" alt="Карачаево-Черкессия" />
-                        <div class="elements__container">
-                            <h2 class="elements__names">Карачаево-Черкессия</h2>
-                            <button class="elements__like" type="button"></button>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <p class="footer__mesto">© 2020 Mesto Russia</p>
-            </footer>
-
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__close" type="button"></button>
-                <form class="popup__window">
-                    <h2 class="popup__profile-edit">Редактировать профиль</h2>
-                    <input class="popup__input popup__input_name" type="text" value="Жак-Ив Кусто"/>
-                    <input class="popup__input popup__input_job" type="text" value="Исследователь океана"/>
-                    <button type="submit" class="popup__save">Сохранить</button>
+    <div class="root">
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="mesto">
+        </header>
+        <main>
+            <!--Профиль-->
+            <section class="profile">
+                <img class="profile__photo" src="./images/avatar.jpg" alt="avatar">
+                <div class="profile__info">
+                    <p class="profile__name">Жак ив Кусто</p>
+                    <p class="profile__job">Исследователь океана</p>
+                    <button class="profile__edit" type="button"></button>
+                </div>
+                <button class="profile__add" type="button"></button>
+            </section>
+            <!--Карточки-->
+            <section class="elements">
+                <ul class="elements__list">
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__caption">© 2020 Mesto Russia</p>
+        </footer>
+        <!--Темплейт-->
+        <template class="template">
+            <li class="elements__element">
+                <img class="elements__photo" src="" alt="">
+                <h2 class="elements__place"></h2>
+                <button class="elements__like" type="button"></button>
+                <button class="elements__trash" type="button"></button>
+            </li>
+        </template>
+        <!--Попап edit-->
+        <section class="popup popup_edit">
+            <div class="popup__container popup__container_add-edit">
+                <button class="popup__close popup__close_edit" type="button"></button>
+                <h2 class="popup__info popup__info_header">Редактировать профиль</h2>
+                <form class="popup__form popup__form_edit">
+                    <input class="popup__info popup__info_name" type="text" value="Имя"></input>
+                    <input class="popup__info popup__info_job" type="text" value="Профессия"></input>
+                    <button class="popup__confirm popup__confirm_edit" type="submit">Сохранить</button>
                 </form>
             </div>
-        </div>
+        </section>
+        <!--Попап add-->
+        <section class="popup popup_add">
+            <div class="popup__container popup__container_add-edit">
+                <button class="popup__close popup__close_add" type="button"></button>
+                <h2 class="popup__info popup__info_header">Новое место</h2>
+                <form class="popup__form popup__form_add">
+                    <input class="popup__info popup__info_place" type="text" placeholder="Название"></input>
+                    <input class="popup__info popup__info_link" type="url" placeholder="Ссылка на картинку"></input>
+                    <button class="popup__confirm popup__confirm_add" type="submit">Создать</button>
+                </form>
+            </div>
+        </section>
+        <!--Попап gallery-->
+        <section class="popup popup__gallery">
+            <div class="popup__container popup__container_gallery">
+                <button class="popup__close popup__close_gallery" type="button"></button>
+                <img class="popup__image" src="" alt="">
+                <p class="popup__caption"></p>
+            </div>
+        </section>
     </div>
-        <script src="./scripts/script.js"></script>
-    </body>
+    <!--Скрипт-->
+    <script src="./scripts/script.js"></script>
+</body>
 </html>

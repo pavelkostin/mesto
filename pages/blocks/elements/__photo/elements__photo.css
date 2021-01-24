@@ -1,0 +1,9 @@
+.elements__photo {
+    grid-area: photo;
+    border-radius:  10px 10px 0 0;
+    object-fit: cover;
+    background-repeat: no-repeat;
+
+    width: 282px;
+    height: 282px;
+}
