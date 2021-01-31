@@ -139,7 +139,7 @@ function cardListeners(cardsTemplate){
 }
 
 //открыть аватар
-const profileAvatar = document.querySelector('.profile__avatar');
+/*const profileAvatar = document.querySelector('.profile__avatar');
 const popupAvatar = document.querySelector('.popup_avatar');
 const popupAvatarCloseBtn = document.querySelector('.popup__close_avatar');
 
@@ -152,7 +152,7 @@ function openAvatar() {
 }
 
 profileAvatar.addEventListener('click', openAvatar);
-popupAvatarCloseBtn.addEventListener('click', openAvatar);
+popupAvatarCloseBtn.addEventListener('click', openAvatar);*/
 
 //слушатели
 editProfileBtn.addEventListener('click', openEditProfile);
