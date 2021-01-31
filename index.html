@@ -3,78 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project_Mesto/5_sprint</title>
-    <link rel="stylesheet" href="./pages/style.css">
+    <title>5 sprint. fast</title>
+    <link rel="stylesheet" type="text/css" href="./pages/style.css">
 </head>
 <body>
-
-    <div class="root">
+    <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="mesto">
+            <img class="header__logo" src="./images/header-logo.svg" alt="logo">
         </header>
-        <main>
-            <!--Профиль-->
-            <section class="profile">
-                <img class="profile__photo" src="./images/avatar.jpg" alt="avatar">
-                <div class="profile__info">
-                    <p class="profile__name">Жак ив Кусто</p>
-                    <p class="profile__job">Исследователь океана</p>
+        <section class="profile">
+            <div class="profile__info">
+                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="avatar">
+                <div class="profile__table">
+                    <div class="profile__name">Жак-Ив Кусто</div>
                     <button class="profile__edit" type="button"></button>
+                    <div class="profile__job">Исследователь океана</div>
                 </div>
-                <button class="profile__add" type="button"></button>
-            </section>
-            <!--Карточки-->
-            <section class="elements">
-                <ul class="elements__list">
-                </ul>
-            </section>
-        </main>
+            </div>
+            <button class="profile__add" type="button"></button>
+        </section>
+        <section class="cards">
+            <ul class="cards__list">
+            </ul>
+        </section>
         <footer class="footer">
-            <p class="footer__caption">© 2020 Mesto Russia</p>
+            <p class="footer__caption">© 2021 Mesto Russia</p>
         </footer>
-        <!--Темплейт-->
-        <template class="template">
-            <li class="elements__element">
-                <img class="elements__photo" src="" alt="">
-                <h2 class="elements__place"></h2>
-                <button class="elements__like" type="button"></button>
-                <button class="elements__trash" type="button"></button>
-            </li>
-        </template>
-        <!--Попап edit-->
-        <section class="popup popup_edit">
-            <div class="popup__container popup__container_add-edit">
-                <button class="popup__close popup__close_edit" type="button"></button>
-                <h2 class="popup__info popup__info_header">Редактировать профиль</h2>
-                <form class="popup__form popup__form_edit">
-                    <input class="popup__info popup__info_name" type="text" value="Имя"></input>
-                    <input class="popup__info popup__info_job" type="text" value="Профессия"></input>
-                    <button class="popup__confirm popup__confirm_edit" type="submit">Сохранить</button>
+
+        <section class="popup popup_edit-profile">
+            <div class="popup__container">
+                <button class="popup__close popup__close_edit-profile"></button>
+                <form class="popup__form popup__form_edit-profile">
+                <h2 class="popup__header">Редактировать профиль</h2>
+                <input class="popup__input popup__input_name" type="text" placeholder="Введите имя" value="">
+                <input class="popup__input popup__input_job" type="text" placeholder="Введите профессию" value="">
+                <button class="popup__submit popup__submit_edit-profile" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
-        <!--Попап add-->
-        <section class="popup popup_add">
-            <div class="popup__container popup__container_add-edit">
-                <button class="popup__close popup__close_add" type="button"></button>
-                <h2 class="popup__info popup__info_header">Новое место</h2>
-                <form class="popup__form popup__form_add">
-                    <input class="popup__info popup__info_place" type="text" placeholder="Название"></input>
-                    <input class="popup__info popup__info_link" type="url" placeholder="Ссылка на картинку"></input>
-                    <button class="popup__confirm popup__confirm_add" type="submit">Создать</button>
+
+        <section class="popup popup_add-card">
+            <div class="popup__container">
+                <button class="popup__close popup__close_add-card"></button>
+                <form class="popup__form popup__form_add-place">
+                <h2 class="popup__header">Новое место</h2>
+                <input class="popup__input popup__input_add popup__input_place" type="text" placeholder="Название" value="">
+                <input class="popup__input popup__input_add popup__input_link" type="text" placeholder="Ссылка на картинку" value="">
+                <button class="popup__submit popup__submit_add-card" type="submit">Создать</button>
                 </form>
             </div>
         </section>
-        <!--Попап gallery-->
-        <section class="popup popup__gallery">
+
+        <section class="popup popup_gallery">
             <div class="popup__container popup__container_gallery">
-                <button class="popup__close popup__close_gallery" type="button"></button>
+                <button class="popup__close popup__close_gallery"></button>
                 <img class="popup__image" src="" alt="">
                 <p class="popup__caption"></p>
             </div>
         </section>
+
+        <section class="popup popup_avatar">
+            <div class="popup__container popup__container_avatar">
+                <button class="popup__close popup__close_avatar"></button>
+                <img class="popup__image_avatar" src="images/avatar_gallery.jpg" alt="">
+                <p class="popup__caption popup__caption_name"></p>
+                <p class="popup__caption popup__caption_job"></p>
+            </div>
+        </section>
+
+        <template class="template">
+            <li class="cards__item">
+                <img class="cards__photo" src="" alt="">
+                <p class="cards__place"></p>
+                <button class="cards__delete"></button>
+                <button class="cards__like"></button>
+            </li>
+        </template>
+
     </div>
-    <!--Скрипт-->
     <script src="./scripts/script.js"></script>
 </body>
 </html>

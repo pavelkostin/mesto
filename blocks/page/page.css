@@ -1,0 +1,11 @@
+.page {
+    font-family: Inter;
+    background-color: black;
+    margin: 0 auto;
+    padding: 0 27px;
+    max-width: 100%;
+    min-width: 320px;
+    border: 1px solid black;
+    position: relative;
+}
+
