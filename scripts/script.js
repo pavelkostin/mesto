@@ -12,7 +12,10 @@ const profileJob = document.querySelector('.profile__job');
 const formAddCard = document.querySelector('.popup__form_add-place');
 const cardName = document.querySelector('.popup__input_place');
 const cardLink = document.querySelector('.popup__input_link');
-
+const popupGallery = document.querySelector('.popup_gallery');
+const popupImage = document.querySelector('.popup__image');
+const popupCaption = document.querySelector('.popup__caption');
+const popupCloseGalleryBtn = document.querySelector('.popup__close_gallery');
 
 const initialCards = [
     {
@@ -106,11 +109,6 @@ function deleteCard(event) {
 
 //открытие фотографии
 
-const popupGallery = document.querySelector('.popup_gallery');
-const popupImage = document.querySelector('.popup__image');
-const popupCaption = document.querySelector('.popup__caption');
-const popupCloseGalleryBtn = document.querySelector('.popup__close_gallery');
-
 function showGalleryPopup() {
     popupGallery.classList.add('popup_visible');
 }
@@ -138,6 +136,21 @@ function cardListeners(cardsTemplate){
     
 }
 
+
+
+//слушатели
+editProfileBtn.addEventListener('click', openEditProfile);
+closeProfileBtn.addEventListener('click', closeEditProfile);
+addCardBtn.addEventListener('click', openAddCard);
+formEditProfile.addEventListener('submit', editProfile);
+closeAddCardBtn.addEventListener('click', closeAddCard);
+formAddCard.addEventListener('submit', addNewCard);
+
+
+
+
+
+
 //открыть аватар
 /*const profileAvatar = document.querySelector('.profile__avatar');
 const popupAvatar = document.querySelector('.popup_avatar');
@@ -153,17 +166,3 @@ function openAvatar() {
 
 profileAvatar.addEventListener('click', openAvatar);
 popupAvatarCloseBtn.addEventListener('click', openAvatar);*/
-
-//слушатели
-editProfileBtn.addEventListener('click', openEditProfile);
-closeProfileBtn.addEventListener('click', closeEditProfile);
-addCardBtn.addEventListener('click', openAddCard);
-formEditProfile.addEventListener('submit', editProfile);
-closeAddCardBtn.addEventListener('click', closeAddCard);
-formAddCard.addEventListener('submit', addNewCard);
-
-
-
-
-
-
