@@ -1,21 +1,34 @@
+
+//кнопки
 const editProfileBtn = document.querySelector('.profile__edit');
-const closeProfileBtn = document.querySelector('.popup__close_edit-profile');
-const popupEdit = document.querySelector('.popup_edit-profile');
 const addCardBtn = document.querySelector('.profile__add');
+const closeButtonList = document.querySelectorAll('.popup__close');
+
+//попапы
+const popupEdit = document.querySelector('.popup_edit-profile');
 const popupAdd = document.querySelector('.popup_add-card');
-const closeAddCardBtn = document.querySelector('.popup__close_add-card');
-const formEditProfile = document.querySelector('.popup__form_edit-profile');
-const cardsList = document.querySelector('.cards__list');
-const cardsTemplate = document.querySelector('.template');
+const popupGallery = document.querySelector('.popup_gallery');
+
+
+const cardsList = document.querySelector('.cards__list'); // список карточек
+
+const cardsTemplate = document.querySelector('.template'); // темплейт
+
+// управление профилем
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
+const formEditProfile = document.querySelector('.popup__form_edit-profile');
+const nameInput = document.querySelector('.popup__input_name');
+const jobInput = document.querySelector('.popup__input_job');
+
+// управление добавлением карточки
 const formAddCard = document.querySelector('.popup__form_add-place');
 const cardName = document.querySelector('.popup__input_place');
 const cardLink = document.querySelector('.popup__input_link');
-const popupGallery = document.querySelector('.popup_gallery');
+
+// управление галлереей
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-const popupCloseGalleryBtn = document.querySelector('.popup__close_gallery');
 
 const initialCards = [
     {
@@ -44,27 +57,36 @@ const initialCards = [
     }
 ];
 
-//открыть и закрыть попап edit и add
-function openEditProfile() {
-    popupEdit.classList.add('popup_visible');
-}
-function closeEditProfile() {
-    popupEdit.classList.remove('popup_visible');
-}
-function openAddCard() {
-    popupAdd.classList.add('popup_visible');
-}
-function closeAddCard() {
-    popupAdd.classList.remove('popup_visible');
+
+//открыть и закрыть попап
+function openPopup(popup) {
+    popup.classList.add('popup_visible');
+    }
+function closePopup(popup) {
+    popup.classList.remove('popup_visible');
+    }
+
+
+//открыть попап редактиварования профиля
+
+function openEditProfilePopup() {
+
+    openPopup(popupEdit);
 }
 
-//редактиварование профиля
-
-function editProfile(evt){
+// субмит редактирования профиля
+function submitEditProfilePopup(evt) {
     evt.preventDefault();
-    profileName.textContent = formEditProfile.querySelector('.popup__input_name').value;
-    profileJob.textContent = formEditProfile.querySelector('.popup__input_job').value;
-    closeEditProfile();
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    closePopup(popupEdit);
+}
+
+//открыть попап добавления карточки
+
+function openAddNewCardPopup() {
+
+    openPopup(popupAdd);
 }
 
 //добавление карточек из массива
@@ -73,9 +95,10 @@ function createCardsDefault({name, link}) {
     card.querySelector('.cards__place').textContent = name;
     card.querySelector('.cards__photo').src = link;
     card.querySelector('.cards__photo').alt = name;
-    cardListeners(card);
+    setCardListeners(card);
     return card
 }
+
 function addCardsDefault() {
     initialCards.forEach(function({name,link}) {
         const newCard = createCardsDefault({name, link})
@@ -83,6 +106,7 @@ function addCardsDefault() {
     })
 }
 addCardsDefault();
+
 
 //добавление карточки в начало
 function createNewCard(name, link) {
@@ -93,7 +117,7 @@ function createNewCard(name, link) {
 function addNewCard(event) {
     event.preventDefault();
     createNewCard(cardName.value, cardLink.value);
-    closeAddCard();
+    closePopup(popupAdd);
 }
 
 //переключение лайка
@@ -107,10 +131,24 @@ function deleteCard(event) {
     event.target.closest('.cards__item').remove();
 }
 
-//открытие фотографии
 
+// слушатели в темплейте
+function setCardListeners(card){
+
+    const like = card.querySelector('.cards__like')
+    const del = card.querySelector('.cards__delete')
+    const photo = card.querySelector('.cards__photo')
+
+    like.addEventListener('click', toggleLike);
+    del.addEventListener('click', deleteCard);
+    photo.addEventListener('click', showGalleryPhoto);
+    
+}
+
+
+//открытие фотографии
 function showGalleryPopup() {
-    popupGallery.classList.add('popup_visible');
+    openPopup(popupGallery);
 }
 
 function showGalleryPhoto(event) {
@@ -122,47 +160,23 @@ function showGalleryPhoto(event) {
 }
 
 function hideGalleryPopup() {
-    popupGallery.classList.remove('popup_visible');
+    closePopup(popupGallery);
 }
-
-popupCloseGalleryBtn.addEventListener('click', hideGalleryPopup);
-
-
-// слушатели в темплейте
-function cardListeners(cardsTemplate){
-    cardsTemplate.querySelector('.cards__like').addEventListener('click', toggleLike);
-    cardsTemplate.querySelector('.cards__delete').addEventListener('click', deleteCard);
-    cardsTemplate.querySelector('.cards__photo').addEventListener('click', showGalleryPhoto);
-    
-}
-
 
 
 //слушатели
-editProfileBtn.addEventListener('click', openEditProfile);
-closeProfileBtn.addEventListener('click', closeEditProfile);
-addCardBtn.addEventListener('click', openAddCard);
-formEditProfile.addEventListener('submit', editProfile);
-closeAddCardBtn.addEventListener('click', closeAddCard);
-formAddCard.addEventListener('submit', addNewCard);
+addCardBtn.addEventListener('click', openAddNewCardPopup); //открыть попап добавления карточки
+formAddCard.addEventListener('submit', addNewCard); //submit добавления карточки
+editProfileBtn.addEventListener('click', openEditProfilePopup); //открыть попап редактиварония профиля
+formEditProfile.addEventListener('submit', submitEditProfilePopup); //submit редактиварония профиля
 
-
-
-
-
-
-//открыть аватар
-/*const profileAvatar = document.querySelector('.profile__avatar');
-const popupAvatar = document.querySelector('.popup_avatar');
-const popupAvatarCloseBtn = document.querySelector('.popup__close_avatar');
-
-
-
-function openAvatar() {
-    popupAvatar.classList.toggle('popup_visible');
-    document.querySelector('.popup__caption_name').textContent = profileName.textContent;
-    document.querySelector('.popup__caption_job').textContent = profileJob.textContent;
+// слушатели - закрыть ближайший попап
+function closePopupByBtn(evt) {
+    const closeButton = evt.target;
+    const popup = closeButton.closest('.popup');
+    closePopup(popup);
 }
 
-profileAvatar.addEventListener('click', openAvatar);
-popupAvatarCloseBtn.addEventListener('click', openAvatar);*/
+closeButtonList.forEach(function(item) {
+    item.addEventListener('click', closePopupByBtn);
+})
