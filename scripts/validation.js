@@ -1,8 +1,8 @@
 // show error
-function showInputError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage, {popupSection, popupInputError}) {
 
-    const formSectionElement = inputElement.closest('.popup__section');
-    const errorElement = formSectionElement.querySelector('.popup__input-error'); 
+    const formSectionElement = inputElement.closest(popupSection);
+    const errorElement = formSectionElement.querySelector(popupInputError); 
 
     errorElement.textContent = errorMessage;                           
     errorElement.classList.add(validationArray.errorClass);  
@@ -10,10 +10,10 @@ function showInputError(formElement, inputElement, errorMessage) {
 }
 
 // hide error
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, {popupSection, popupInputError}) {
     
-    const formSectionElement = inputElement.closest('.popup__section');
-    const errorElement = formSectionElement.querySelector('.popup__input-error'); 
+    const formSectionElement = inputElement.closest(popupSection);
+    const errorElement = formSectionElement.querySelector(popupInputError); 
 
     errorElement.textContent = '';
     errorElement.classList.remove(validationArray.errorClass);
@@ -22,14 +22,14 @@ function hideInputError(formElement, inputElement) {
 
 // validity, hide, show, toggle
 
-function checkInputValidity(formElement, inputElement) {
+function checkInputValidity(formElement, inputElement, {popupSection, popupInputError}) {
     const isInputNotValid = !inputElement.validity.valid;
 
     if (isInputNotValid) {                                         
         const errorMessage = inputElement.validationMessage;
-        showInputError(formElement, inputElement, errorMessage);
+        showInputError(formElement, inputElement, errorMessage, {popupSection, popupInputError});
     } else {                                               
-        hideInputError(formElement, inputElement);           
+        hideInputError(formElement, inputElement, {popupSection, popupInputError});           
     }
 };
 
@@ -48,13 +48,13 @@ function toggleButtonState(inputList, buttonElement, {inactiveButtonClass}) {
 };
 
 // listeners
-function setEventListeners(formElement, {inputSelector, submitButtonSelector}) {
+function setEventListeners(formElement, {inputSelector, submitButtonSelector, popupSection, popupInputError}) {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     const buttonElement = formElement.querySelector(submitButtonSelector);
 
     inputList.forEach((inputSelector) => {                   
         inputSelector.addEventListener('input', () => {     
-            checkInputValidity(formElement, inputSelector);
+            checkInputValidity(formElement, inputSelector, {popupSection, popupInputError});
             toggleButtonState(inputList, buttonElement, validationArray);
         })
     })

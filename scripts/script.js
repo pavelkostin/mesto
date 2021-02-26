@@ -168,7 +168,7 @@ popupEditForm.addEventListener('submit', editProfileSumit);
 function closePopupByKey(event) {
     const popupVisible = document.querySelector('.popup_visible');
     if (event.key === 'Escape') {                                     
-        closePopup(popupVisible, event)                                 
+        closePopup(popupVisible)                                 
     }
 }
 
@@ -177,7 +177,7 @@ function closePopupByKey(event) {
 function closePopupByOverlay(event) {
     const popupVisible = document.querySelector('.popup_visible');
     if (event.target === event.currentTarget) {                    
-        closePopup(popupVisible, event);          
+        closePopup(popupVisible);          
     }
 };
 
