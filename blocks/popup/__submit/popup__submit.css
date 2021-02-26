@@ -10,11 +10,23 @@
 
 @media screen and (max-width: 880px) {
     .popup__submit {
-        max-width: 238px;
+        max-width: 282px;
+        align-self: center;
     }
 }
 
 .popup__submit:hover {
     opacity: .6;
     cursor: pointer;
+}
+
+
+.popup__submit:disabled {
+    color: #B8B8B8;
+    background: #EDEDED;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

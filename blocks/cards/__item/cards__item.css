@@ -1,8 +1,12 @@
 .cards__item {
     max-width: 282px;
     border-radius: 10px;
+
+
     list-style-type: none;
     background-color: white;
+    border-radius: 10px;
+
     display: grid;
     grid-template-areas: 
     "photo delete"
