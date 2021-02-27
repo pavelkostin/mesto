@@ -1,8 +1,8 @@
 // show error
-function showInputError(formElement, inputElement, errorMessage, {popupSection, popupInputError}) {
+function showInputError(formElement, inputElement, errorMessage, validationArray) {
 
-    const formSectionElement = inputElement.closest(popupSection);
-    const errorElement = formSectionElement.querySelector(popupInputError); 
+    const formSectionElement = inputElement.closest(validationArray.popupSection);
+    const errorElement = formSectionElement.querySelector(validationArray.popupInputError); 
 
     errorElement.textContent = errorMessage;                           
     errorElement.classList.add(validationArray.errorClass);  
@@ -10,10 +10,10 @@ function showInputError(formElement, inputElement, errorMessage, {popupSection, 
 }
 
 // hide error
-function hideInputError(formElement, inputElement, {popupSection, popupInputError}) {
+function hideInputError(formElement, inputElement, validationArray) {
     
-    const formSectionElement = inputElement.closest(popupSection);
-    const errorElement = formSectionElement.querySelector(popupInputError); 
+    const formSectionElement = inputElement.closest(validationArray.popupSection);
+    const errorElement = formSectionElement.querySelector(validationArray.popupInputError); 
 
     errorElement.textContent = '';
     errorElement.classList.remove(validationArray.errorClass);
@@ -22,14 +22,14 @@ function hideInputError(formElement, inputElement, {popupSection, popupInputErro
 
 // validity, hide, show, toggle
 
-function checkInputValidity(formElement, inputElement, {popupSection, popupInputError}) {
+function checkInputValidity(formElement, inputElement, validationArray) {
     const isInputNotValid = !inputElement.validity.valid;
 
     if (isInputNotValid) {                                         
         const errorMessage = inputElement.validationMessage;
-        showInputError(formElement, inputElement, errorMessage, {popupSection, popupInputError});
+        showInputError(formElement, inputElement, errorMessage, validationArray);
     } else {                                               
-        hideInputError(formElement, inputElement, {popupSection, popupInputError});           
+        hideInputError(formElement, inputElement, validationArray);           
     }
 };
 
@@ -37,32 +37,32 @@ function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
-function toggleButtonState(inputList, buttonElement, {inactiveButtonClass}) {
+function toggleButtonState(inputList, buttonElement, validationArray) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.classList.add(validationArray.inactiveButtonClass);
         buttonElement.setAttribute('disabled', true);
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.classList.remove(validationArray.inactiveButtonClass);
         buttonElement.removeAttribute('disabled');
     }
 };
 
 // listeners
-function setEventListeners(formElement, {inputSelector, submitButtonSelector, popupSection, popupInputError}) {
-    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-    const buttonElement = formElement.querySelector(submitButtonSelector);
+function setEventListeners(formElement, validationArray) {
+    const inputList = Array.from(formElement.querySelectorAll(validationArray.inputSelector));
+    const buttonElement = formElement.querySelector(validationArray.submitButtonSelector);
 
     inputList.forEach((inputSelector) => {                   
         inputSelector.addEventListener('input', () => {     
-            checkInputValidity(formElement, inputSelector, {popupSection, popupInputError});
+            checkInputValidity(formElement, inputSelector, validationArray);
             toggleButtonState(inputList, buttonElement, validationArray);
         })
     })
 }
 
 //enable validation
-function enableValidation({formSelector}) {
-    const formElements = document.querySelectorAll(formSelector)
+function enableValidation(validationArray) {
+    const formElements = document.querySelectorAll(validationArray.formSelector)
     const formList = Array.from(formElements);                            
     function formListIterator(formElement) {                           
         function submitFormHandler(event) {                          
