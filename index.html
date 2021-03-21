@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5 sprint. fast</title>
     <link rel="stylesheet" type="text/css" href="./pages/style.css">
-    <script src="./scripts/script.js" defer></script>
-    <script src="./scripts/validationArray.js" defer></script>
-    <script src="./scripts/validation.js" defer></script>
+    
+
 
 </head>
 <body>
@@ -25,11 +24,13 @@
                 </div>
             </div>
             <button class="profile__add" type="button"></button>
+
         </section>
         <section class="cards">
             <ul class="cards__list">
             </ul>
         </section>
+
         <footer class="footer">
             <p class="footer__caption">© 2021 Mesto Russia</p>
         </footer>
@@ -91,7 +92,7 @@
             </div>
         </section>
 
-        <template class="template">
+        <template class="template template_type_default">
             <li class="cards__item">
                 <img class="cards__photo" src=" " alt=" ">
                 <p class="cards__place"></p>
@@ -101,5 +102,14 @@
         </template>
 
     </div>
+
+    <script src="./scripts/initialCards.js" type="module"></script>
+    <script src="./scripts/Card.js" type="module"></script>
+    <script src="./scripts/FormValidator.js" type="module"></script>
+    <script src="./scripts/script.js" type="module"></script>
+
+
+
+
 </body>
 </html>
