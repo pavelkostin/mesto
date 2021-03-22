@@ -4,7 +4,7 @@
 
 
 
-    -moz-transition: visibility .3s, opacity .3s linear ;
+    -moz-transition: visibility .3s, opacity .3s linear;
     transition: visibility .3s, opacity .3s linear;
 
 }
