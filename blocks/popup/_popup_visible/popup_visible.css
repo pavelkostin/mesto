@@ -1,4 +1,10 @@
 .popup_visible {
     visibility: visible;
     opacity: 1;
+
+
+
+    -moz-transition: visibility .3s, opacity .3s linear ;
+    transition: visibility .3s, opacity .3s linear;
+
 }

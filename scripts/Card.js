@@ -1,8 +1,12 @@
-export class Card {
-    constructor(data, cardSelector) {
+
+
+export default class Card {
+    constructor(data, cardSelector, handlePreviewPicture) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handlePreviewPicture = handlePreviewPicture;
+
     }
 
     // получили темплейт
@@ -12,12 +16,14 @@ export class Card {
     }
 
     generateCard() {
-        this._element = this._getTemplate();
-        this._setEventListeners();
-        this._element.querySelector(".cards__photo").src = this._link;
-        this._element.querySelector(".cards__place").textContent = this._name;
-        this._element.querySelector(".cards__photo").alt = this._name;
 
+        this._element = this._getTemplate(); 
+        this._setEventListeners();
+        const cardsPhoto = this._element.querySelector('.cards__photo');
+        const cardsPlace = this._element.querySelector('.cards__place');
+        cardsPhoto.src = this._link;
+        cardsPhoto.alt = this._name;
+        cardsPlace.textContent = this._name;
         return this._element;
     }
 
@@ -30,17 +36,29 @@ export class Card {
         this._element.querySelector(".cards__delete").addEventListener("click", () => {
             this._deleteCard();
         });
+
+        this._element.querySelector(".cards__photo").addEventListener('click', () => {
+            this._handlePreviewPicture(this._name, this._link);
+        })
     }
 
     // лайк
     _setLike() {
-        const eventTarget = event.target.closest(".cards__like");
-        eventTarget.classList.toggle("cards__like_active");
+
+        this._likeBtn = this._element.querySelector('.cards__like');
+
+        if (this._likeBtn.classList.contains('cards__like_active')) {
+            this._likeBtn.classList.toggle('cards__like_active');
+        }else{
+            this._likeBtn.classList.toggle('cards__like_active');
+        }
     }
 
     // удалить
     _deleteCard() {
-        const eventTarget = event.target.closest(".cards__item");
-        eventTarget.remove();
+
+        this._element.querySelector('.cards__item');
+        this._element.remove();
     }
 }
+
