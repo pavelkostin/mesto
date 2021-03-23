@@ -50,15 +50,12 @@ resetErrorInput() {
 
     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
     const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-
     inputList.forEach((inputElement) => {                                 
         this._hideInputError(inputElement);           
     });
-
+    
     this.toggleButtonState(inputList, buttonElement);                      
 }
-
-
 
     // Переключение кнопки
     toggleButtonState(inputList, buttonElement) {
@@ -84,15 +81,11 @@ resetErrorInput() {
                 this._checkInputValidity(inputElement);
                 this.toggleButtonState(inputList, buttonElement);
             });
-
-            
         });
-
-        
     }
 
     //enable validation
     enableValidation() {
-        this._setEventListeners(this._formElement);
+        this._setEventListeners();
     }
 }

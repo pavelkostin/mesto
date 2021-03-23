@@ -1,12 +1,9 @@
 
-
 export default class Card {
-    constructor(data, cardSelector, handlePreviewPicture) {
+    constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        this._handlePreviewPicture = handlePreviewPicture;
-
     }
 
     // получили темплейт
@@ -19,8 +16,10 @@ export default class Card {
 
         this._element = this._getTemplate(); 
         this._setEventListeners();
+
         const cardsPhoto = this._element.querySelector('.cards__photo');
         const cardsPlace = this._element.querySelector('.cards__place');
+        
         cardsPhoto.src = this._link;
         cardsPhoto.alt = this._name;
         cardsPlace.textContent = this._name;
@@ -37,10 +36,37 @@ export default class Card {
             this._deleteCard();
         });
 
-        this._element.querySelector(".cards__photo").addEventListener('click', () => {
-            this._handlePreviewPicture(this._name, this._link);
+        this._element.querySelector('.cards__photo').addEventListener('click', () => {
+            this._handlePreviewPicture();
         })
+
+        document.addEventListener("keydown", (event) => {
+            this._closePopupByKey(event);
+        });
     }
+
+    // открыть галлерею
+
+    _handlePreviewPicture() {
+
+        const popupGallery = document.querySelector('.popup_gallery');
+        const cardsPhoto = popupGallery.querySelector('.popup__image');
+        const cardsPlace = popupGallery.querySelector('.popup__caption');
+
+        cardsPhoto.src = this._link;
+        cardsPhoto.alt = this._name;
+        cardsPlace.textContent = this._name;
+
+        popupGallery.classList.add('popup_visible');
+    }
+
+    _closePopupByKey(event) {
+        const popupGallery = document.querySelector('.popup_gallery');
+        if (event.key === "Escape") {
+            popupGallery.classList.remove('popup_visible');
+        }
+    }
+
 
     // лайк
     _setLike() {
@@ -60,5 +86,6 @@ export default class Card {
         this._element.querySelector('.cards__item');
         this._element.remove();
     }
+
 }
 
