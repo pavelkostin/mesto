@@ -17,12 +17,13 @@ export default class Card {
         this._element = this._getTemplate(); 
         this._setEventListeners();
 
-        const cardsPhoto = this._element.querySelector('.cards__photo');
-        const cardsPlace = this._element.querySelector('.cards__place');
+        this.cardsPhoto = this._element.querySelector('.cards__photo');
+        this.cardsPlace = this._element.querySelector('.cards__place');
         
-        cardsPhoto.src = this._link;
-        cardsPhoto.alt = this._name;
-        cardsPlace.textContent = this._name;
+        this.cardsPhoto.src = this._link;
+        this.cardsPhoto.alt = this._name;
+        this.cardsPlace.textContent = this._name;
+
         return this._element;
     }
 
@@ -49,15 +50,15 @@ export default class Card {
 
     _handlePreviewPicture() {
 
-        const popupGallery = document.querySelector('.popup_gallery');
-        const cardsPhoto = popupGallery.querySelector('.popup__image');
-        const cardsPlace = popupGallery.querySelector('.popup__caption');
+        this.popupGallery = document.querySelector('.popup_gallery');
+        this.cardsPhoto = this.popupGallery.querySelector('.popup__image');
+        this.cardsPlace = this.popupGallery.querySelector('.popup__caption');
 
-        cardsPhoto.src = this._link;
-        cardsPhoto.alt = this._name;
-        cardsPlace.textContent = this._name;
+        this.cardsPhoto.src = this._link;
+        this.cardsPhoto.alt = this._name;
+        this.cardsPlace.textContent = this._name;
 
-        popupGallery.classList.add('popup_visible');
+        this.popupGallery.classList.add('popup_visible');
     }
 
     _closePopupByKey(event) {
