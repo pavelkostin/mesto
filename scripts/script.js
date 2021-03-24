@@ -1,3 +1,5 @@
+export {popupGallery, closePopupByKey, openPopup}
+
 import { initialCards } from "./initialCards.js";
 import Card from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
@@ -40,8 +42,21 @@ const validationArray = {
 // функции
 //------------------------------------------------------------------------------------
 
-
 // запонение профиля
+
+function setPopupProfile() {
+    popupEditName.value = profileName.textContent;
+    popupEditJob.value = profileJob.textContent;
+}
+
+setPopupProfile();
+
+
+function handleProfilePopup() {
+    setPopupProfile()
+    openPopup(popupEdit);
+}
+
 
 function editProfileSumit(event) {
     event.preventDefault();
@@ -49,6 +64,7 @@ function editProfileSumit(event) {
     profileJob.textContent = popupEditJob.value;
     closePopup(popupEdit);
 }
+
 
 
 // открыть попап - универсальная функция
@@ -59,7 +75,6 @@ function openPopup(popup) {
     
     popup.classList.add("popup_visible");
     document.addEventListener("keydown", closePopupByKey);
-    //popup.addEventListener('click', closePopupByOverlay); //закрытие с close button или overlay
 }
 
 
@@ -68,7 +83,6 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove("popup_visible");
     document.removeEventListener("keydown", closePopupByKey);
-    //popup.removeEventListener('click', closePopupByOverlay);
 }
 
 function closePopupClosest(event) {
@@ -107,14 +121,13 @@ popupEdit.addEventListener("mousedown", closePopupByOverlay);
 popupAdd.addEventListener("mousedown", closePopupByOverlay);
 popupGallery.addEventListener("mousedown", closePopupByOverlay);
 
-popupEditForm.addEventListener("submit", editProfileSumit);
-popupAddForm.addEventListener("submit", addNewCard);
 
+popupAddForm.addEventListener("submit", addNewCard);
+popupEditForm.addEventListener("submit", editProfileSumit);
 
 
 popupEditBtn.addEventListener("click", () => {
-
-    openPopup(popupEdit);
+    handleProfilePopup(popupEdit);
 })
 
 

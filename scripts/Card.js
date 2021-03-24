@@ -1,4 +1,7 @@
 
+import {popupGallery, openPopup} from './script.js'
+
+
 export default class Card {
     constructor(data, cardSelector) {
         this._name = data.name;
@@ -38,12 +41,12 @@ export default class Card {
         });
 
         this._element.querySelector('.cards__photo').addEventListener('click', () => {
-            this._handlePreviewPicture();
+
+            openPopup(popupGallery);                    // открыть попап
+
+            this._handlePreviewPicture();               // собрать галлерею
         })
 
-        document.addEventListener("keydown", (event) => {
-            this._closePopupByKey(event);
-        });
     }
 
     // открыть галлерею
@@ -57,16 +60,9 @@ export default class Card {
         this.cardsPhoto.src = this._link;
         this.cardsPhoto.alt = this._name;
         this.cardsPlace.textContent = this._name;
-
-        this.popupGallery.classList.add('popup_visible');
+        
     }
 
-    _closePopupByKey(event) {
-        const popupGallery = document.querySelector('.popup_gallery');
-        if (event.key === "Escape") {
-            popupGallery.classList.remove('popup_visible');
-        }
-    }
 
 
     // лайк
@@ -74,11 +70,9 @@ export default class Card {
 
         this._likeBtn = this._element.querySelector('.cards__like');
 
-        if (this._likeBtn.classList.contains('cards__like_active')) {
-            this._likeBtn.classList.toggle('cards__like_active');
-        }else{
-            this._likeBtn.classList.toggle('cards__like_active');
-        }
+        this._likeBtn.classList.toggle('cards__like_active');
+
+
     }
 
     // удалить
@@ -89,4 +83,3 @@ export default class Card {
     }
 
 }
-
