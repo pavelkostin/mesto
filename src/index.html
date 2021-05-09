@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 спринт. Место</title>
-    <link rel="stylesheet" type="text/css" href="./pages/style.css">
-</head>
+    <title> 8 sprint 13-04-21 </title>
+    <!--<link rel="stylesheet" type="text/css" href="./pages/style.css">-->
 
+
+
+</head>
 <body>
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/header-logo.svg" alt="logo">
+            <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="logo">
+            
         </header>
         <section class="profile">
             <div class="profile__info">
-                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="avatar">
+                <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="avatar">
                 <div class="profile__table">
                     <div class="profile__name">Жак-Ив Кусто</div>
                     <button class="profile__edit" type="button"></button>
@@ -22,13 +25,11 @@
                 </div>
             </div>
             <button class="profile__add" type="button"></button>
-
         </section>
         <section class="cards">
             <ul class="cards__list">
             </ul>
         </section>
-
         <footer class="footer">
             <p class="footer__caption">© 2021 Mesto Russia</p>
         </footer>
@@ -37,20 +38,21 @@
             <div class="popup__container">
                 <button class="popup__close popup__close_edit-profile"></button>
 
-                <form class="popup__form popup__form_edit-profile">
+                <form class="popup__form popup__form_edit-profile" name="editProfileForm">
+
                         <h2 class="popup__header">Редактировать профиль</h2>
 
-                        <label class="popup__section">
-                            <input class="popup__input popup__input_name" placeholder="Имя"
+                        <section class="popup__section">
+                            <input class="popup__input popup__input_name" placeholder="Жак-Ив Кусто"
                             required type="text" name="name" id="name" minlength="2" maxlength="40">
                             <span class="popup__input-error" id="name-error"></span>
-                        </label>
+                        </section>
 
-                        <label class="popup__section">
-                        <input class="popup__input popup__input_job" placeholder="Работа"
+                        <section class="popup__section">
+                        <input class="popup__input popup__input_job" placeholder="Исследователь океана"
                         required type="text" name="job" id="job"  minlength="2" maxlength="200">
                         <span class="popup__input-error" id="job-error"></span>
-                        </label>
+                        </section>
 
                         <button class="popup__submit popup__submit_edit-profile" type="submit">Сохранить</button>
                 </form>
@@ -61,36 +63,37 @@
             <div class="popup__container">
                 <button class="popup__close popup__close_add-card"></button>
 
-                <form class="popup__form popup__form_add-place">
+                <form class="popup__form popup__form_add-place" name="addCardForm">
+
                         <h2 class="popup__header">Новое место</h2>
 
-                        <label class="popup__section">
+                        <section class="popup__section">
                             <input class="popup__input popup__input_add popup__input_place" placeholder="Название"
                             required type="text" name="place" id="place" minlength="2" maxlength="30">
                             <span class="popup__input-error" id="place-error"></span>
-                        </label>
+                        </section>
 
                         
-                        <label class="popup__section">
+                        <section class="popup__section">
                             <input class="popup__input popup__input_add popup__input_link" placeholder="Ссылка на картинку"
                             required type="url" name="url" id="url">
                             <span class="popup__input-error" id="url-error"></span>
-                        </label>
+                        </section>
 
                         <button class="popup__submit popup__submit_add-card" type="submit">Создать</button>
                 </form>
             </div>
         </section> 
 
-        <div class="popup popup_gallery">
+        <section class="popup popup_gallery">
             <div class="popup__container popup__container_gallery">
                 <button class="popup__close popup__close_gallery"></button>
                 <img class="popup__image" src=" " alt=" ">
                 <p class="popup__caption"></p>
             </div>
-        </div>
+        </section>
 
-        <template class="template template_type_default">
+        <template class="template">
             <li class="cards__item">
                 <img class="cards__photo" src=" " alt=" ">
                 <p class="cards__place"></p>
@@ -100,12 +103,6 @@
         </template>
 
     </div>
-
-
-    <script src="./scripts/script.js" type="module"></script>
-
-
-
-
+    
 </body>
 </html>
