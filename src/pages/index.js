@@ -16,15 +16,18 @@ import './index.css';
 const popupImage = new PopupWithImage('.popup_gallery');
 popupImage.setEventListeners();
 
+// создание экземпляра карточки и добавление в cardsList
+function createCards(data) {
+    const newCard = new Card(data, '.template', popupImage.open.bind(popupImage))
+    cardsList.setItems(newCard.generateCard());
+}
+
 
 // отрисовка карточек
-
 const cardsList = new Section({
     data: initialCards, 
-    renderer: function(element) {
-
-        const newCard = new Card(element, '.template', popupImage.open.bind(popupImage))
-        cardsList.setItems(newCard.generateCard());
+    renderer: function(data) {
+        createCards(data);
     }
 },
 
@@ -33,11 +36,13 @@ const cardsList = new Section({
 cardsList.renderItems();
 
 
+
+
 // открытие попапа профиля
 
 const userInfo = new UserInfo({ name: profileName, job: profileJob});
 
-const profilePopup = new PopupWithForm({selector: '.popup_edit-profile', formHandler: () => {
+const profilePopup = new PopupWithForm({popup: '.popup_edit-profile', formHandler: () => {
     userInfo.setUserInfo({name: popupName.value, job: popupJob.value});
     profilePopup.close();
     }});
@@ -55,7 +60,7 @@ const profilePopup = new PopupWithForm({selector: '.popup_edit-profile', formHan
 
 // открыть второй попап
 
-const addPopup = new PopupWithForm({selector: '.popup_add-card', formHandler: () => {
+const addPopup = new PopupWithForm({popup: '.popup_add-card', formHandler: () => {
 
 const newCard = new Card(
 
@@ -75,6 +80,7 @@ addPopup.close();
     btnAdd.addEventListener('click', (e) => {
         e.preventDefault();
         addPopup.open();
+        addCardValidation.resetErrorInput();
     })
 
     addPopup.setEventListeners();
@@ -86,3 +92,4 @@ addPopup.close();
 
     const addCardValidation = new FormValidation(validationArray, popupAddForm);
     addCardValidation.enableValidation();
+    

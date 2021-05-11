@@ -18,10 +18,20 @@ export default class Card {
         
         this.setEventListeners();
 
-        this._element.querySelector('.cards__photo').src = this._link;
-        this._element.querySelector('.cards__photo').alt = this._name;
-        this._element.querySelector('.cards__place').textContent = this._name;
+        this._cardsPhoto = this._element.querySelector('.cards__photo');
+        this._cardsPlace = this._element.querySelector('.cards__place');
+        this._cardsLike = this._element.querySelector('.cards__like');
+        this._cardsDelete = this._element.querySelector('.cards__delete');
+        
+
+        this._cardsPhoto.src = this._link;
+        this._cardsPhoto.alt = this._name;
+        this._cardsPlace.textContent = this._name;
+
         return this._element;
+
+
+
     }
 
 
