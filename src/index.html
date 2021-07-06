@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 8 sprint 13-04-21 </title>
-
-
-
+    <title>9 sprint</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./pages/style.css"> -->
 </head>
 <body>
     <div class="page">
         <header class="header">
             <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="logo">
-            
         </header>
         <section class="profile">
             <div class="profile__info">
-                <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="avatar">
+                <img class="profile__avatar" src="" alt="avatar">
+
+                
+                
                 <div class="profile__table">
                     <div class="profile__name">Жак-Ив Кусто</div>
                     <button class="profile__edit" type="button"></button>
@@ -92,16 +92,50 @@
             </div>
         </section>
 
+        
+
+        <section class="popup popup_confirm">
+            <div class="popup__container">
+                <button class="popup__close popup__close_gallery"></button>
+                <h2 class="popup__header">Вы уверены?</h2>
+                <button class="popup__submit popup__submit-delete" type="button">Да</button>
+            </div>
+        </section>
+
+        <section class="popup popup_avatar">
+            <div class="popup__container">
+                <button class="popup__close popup__close_gallery"></button>
+                <h2 class="popup__header">Обновить аватар</h2>
+                <form class="popup__form popup__form_add-place" name="addCardForm">
+
+                    <section class="popup__section">
+                        <input class="popup__input popup__input_avatar popup__input_place " placeholder="Ссылка на новый аватар"
+                        required type="link" name="place" id="place" minlength="2">
+                        <span class="popup__input-error" id="place-error"></span>
+                    </section>
+                    
+                    <span class="popup__input-error" id="url-error"></span>
+                    
+                    <button class="popup__submit popup__submit_add-card popup_save-avatar" id="popupSubmitAvatar" type="submit">Сохранить</button>
+                </form>
+
+            </div>
+        </section>
+
+
+
         <template class="template">
             <li class="cards__item">
                 <img class="cards__photo" src=" " alt=" ">
                 <p class="cards__place"></p>
                 <button class="cards__delete"></button>
                 <button class="cards__like"></button>
+                <p class="cards__quantity-likes"></p>
             </li>
         </template>
 
     </div>
+
     
 </body>
 </html>

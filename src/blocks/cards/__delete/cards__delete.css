@@ -14,6 +14,8 @@
     margin-top: 18px;
     z-index: 1;
 
+    visibility: visible;
+
 }
 
 .cards__delete:hover {

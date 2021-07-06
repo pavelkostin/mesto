@@ -10,9 +10,10 @@
     display: grid;
     grid-template-areas: 
     "photo delete"
-    "place like";
+    "place like"
+    "place likesQuantity";
     grid-template-columns: 80% 20%;
-    grid-template-rows: 80% 20%;
+    grid-template-rows: 80% 10% 10%;
 
 
 

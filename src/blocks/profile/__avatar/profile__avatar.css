@@ -4,6 +4,10 @@
     border-radius: 100px;
     background-size: contain;
     background-position: center;
+}
 
-    
+
+.profile__avatar:hover {
+    opacity: .2;
+    cursor: url('../../../images/edit-icon.svg'), move;
 }

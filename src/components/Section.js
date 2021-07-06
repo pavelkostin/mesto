@@ -1,23 +1,45 @@
 
-
-export default class Section {
-    constructor({data, renderer}, selector) {
-        this._initialArray = data;
+export default class Section{
+    constructor({items, renderer}, popupSelector) {
+        this._renderedItems = items;
         this._renderer = renderer;
-        this._selector = document.querySelector(selector);
+
+        this._popupSelector = document.querySelector(popupSelector)
     }
 
     renderItems() {
-        this._initialArray.forEach((item) => {
-            this._renderer(item);
+        this._renderedItems.forEach(item => {
+            this._renderer(item)
         });
     }
 
-    setItems(element) {
-        this._selector.append(element);
+
+    addItem(element) {
+        this._popupSelector.append(element)
     }
 
-    prependItems(element) {
-        this._selector.prepend(element);
+
+    prependItem(element) {
+        this._popupSelector.prepend(element)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
