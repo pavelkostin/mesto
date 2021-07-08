@@ -3,55 +3,19 @@ import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup{
     constructor(popupSelector) {
         super(popupSelector)
+
+        this._popupImage = this.popupSelector.querySelector('.popup__image');
+        this._popupCaption = this.popupSelector.querySelector('.popup__caption');
+        
     }
 
 
     open(name, link) {
         super.open();
-        this.popupSelector.querySelector('.popup__image').src = link;
-        this.popupSelector.querySelector('.popup__image').alt = name;
-        this.popupSelector.querySelector('.popup__caption').textContent = name;
-        return this.popupSelector
+        this._popupImage.src = link;
+        this._popupImage.alt = name;
+        this._popupCaption.textContent = name;
+        
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-import Popup from "./Popup.js";
-
-export default class PopupWithImage extends Popup {
-    constructor(popupSelector) {
-        super(popupSelector)
-    }
-
-    open(name, link) {
-        super.open();
-        this.popupSelector.querySelector('.popup__image').src = link;
-        this.popupSelector.querySelector('.popup__image').alt = name;
-        this.popupSelector.querySelector('.popup__caption').textContent = name;
-        return this.popupSelector;
-    }
-
-}
-
-*/

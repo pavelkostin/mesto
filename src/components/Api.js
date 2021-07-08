@@ -1,4 +1,4 @@
-import { popupLink, popupPlace, popupAvatarInput } from "../utils/constants.js";
+//import { popupLink, popupPlace, popupAvatarInput } from "../utils/constants.js";
 
 export default class Api {
     constructor(options) {
@@ -42,13 +42,13 @@ export default class Api {
         }).then(this._checkResponse);
     }
 
-    postNewCard() {
+    postNewCard(name, link) {
         return fetch(`${this._url}/cards`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
-                name: popupPlace.value,
-                link: popupLink.value,
+                name: name,
+                link: link
             }),
         }).then(this._checkResponse);
     }
@@ -98,12 +98,13 @@ export default class Api {
             .then(this._checkResponse)
     }
 
-    editAvatar() {
+    editAvatar(avatar) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
-                avatar: popupAvatarInput.value
+                avatar: avatar
+                //avatar: popupAvatarInput.value
             })
         }).then(this._checkResponse);
     }

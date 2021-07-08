@@ -1,14 +1,14 @@
 
 export default class Section{
-    constructor({items, renderer}, popupSelector) {
-        this._renderedItems = items;
+    constructor({renderer}, popupSelector) {
+        //this._renderedItems = items;
         this._renderer = renderer;
 
         this._popupSelector = document.querySelector(popupSelector)
     }
 
-    renderItems() {
-        this._renderedItems.forEach(item => {
+    renderItems(items) {
+        items.forEach(item => {
             this._renderer(item)
         });
     }

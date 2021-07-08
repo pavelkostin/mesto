@@ -10,12 +10,13 @@ export default class PopupConfirm extends Popup {
 
     open() {
         super.open();
-        this.setEventListeners();
+        //this.setEventListeners();
     }
 
     setEventListeners() {
         super.setEventListeners();
-        this._deleteCardBtn.addEventListener('click', this._deleteSubmit);
+        this.popupSelector.querySelector('.popup__form_delete')
+        .addEventListener('submit', this._deleteSubmit);
     }
 
 

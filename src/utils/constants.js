@@ -41,6 +41,7 @@ const popupLink = document.querySelector(".popup__input_link");
 const popupAvatarInput = document.querySelector('.popup__input_avatar');
 const popupEditForm = document.querySelector(".popup__form_edit-profile");
 const popupAddForm = document.querySelector(".popup__form_add-place");
+const popupAvatarForm = document.querySelector('.popup__form_edit-avatar')
 
 const validationArray = {
     formSelector: ".popup__form",
@@ -59,4 +60,4 @@ const validationArray = {
 
 export {cardsList, popupName, popupJob, popupEditBtn,
     profileName, profileJob, profileAvatar, popupAddCardBtn, popupPlace, popupLink, popupAvatarInput,
-    popupEditForm, popupAddForm, validationArray}
+    popupAvatarForm, popupEditForm, popupAddForm, validationArray}

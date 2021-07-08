@@ -44,15 +44,16 @@ export default class Card {
             return user._id === this._userId
         })) {
             this._likeBtn.classList.add('cards__like_active');
+
         }
     }
 
     _handlelike() {
         if (!this._newTemplate.querySelector('.cards__like').classList.contains('cards__like_active')) {
-            this._newTemplate.querySelector('.cards__like').classList.add('cards__like_active')
+            //this._newTemplate.querySelector('.cards__like').classList.add('cards__like_active')
             this._handleCardLike();
         } else {
-            this._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
+            //this._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
             this._handleCardDislike();
         }
     }
