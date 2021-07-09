@@ -106,7 +106,7 @@ export default class Card {
 
         this._likeBtn = this._newTemplate.querySelector('.cards__like');
         this._deleteBtn = this._newTemplate.querySelector('.cards__delete');
-        this.hideDeleteBtn()
+        this.hideDeleteBtn();
 
         this._ifLiked()
 

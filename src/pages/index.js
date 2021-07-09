@@ -99,7 +99,7 @@ const newPopupAvatar = new PopupWithForm({
 
         //debugger
         
-        newApi.editAvatar(popupAvatarInput.value)
+        newApi.editAvatar(data.avatar)
             .then((data) => {
 
                 userInfo.setUserInfo(data)
@@ -123,7 +123,9 @@ newPopupAvatar.setEventListeners()
 
 const avatarBtn = document.querySelector('.profile__avatar')
 avatarBtn.addEventListener('click', () => {
+    editAvatarValidation.resetErrorInput()
     newPopupAvatar.open()
+    
 })
 
 
@@ -146,13 +148,14 @@ const userInfo = new UserInfo({ name: profileName, about: profileJob, avatar: pr
 Promise.all([ newApi.getUSerInfoFromServer(), newApi.getCardsFromServer() ])
 .then((data)=>{ 
     userInfo.setUserInfo(data[0]);
-    //console.log(data);
+    console.log(data);
     cardsList.renderItems(data[1])
 }) 
 .catch((err)=>{console.log(err)})
 
 
 // получить список карточек с сервера
+
 /* newApi.getCardsFromServer()
     .then((cards) => {
         const cardsList = new Section({
