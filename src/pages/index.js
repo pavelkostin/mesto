@@ -36,14 +36,17 @@ function createCard(data) {
         templateSelector: ".template",
         userId: userId,
         handleCardClick: newPopupWithImage.open.bind(newPopupWithImage),
+
         handleDeleteClick: () => {
+
             newPopupConfirm.open()
             cardToDelete = newCard;
         },
         handleCardLike: () => {
             newApi.likeCard(newCard)
                 .then((data) => {
-                    newCard._newTemplate.querySelector('.cards__like').classList.add('cards__like_active')
+                    //newCard._newTemplate.querySelector('.cards__like').classList.add('cards__like_active')
+                    newCard.setLike()
                     newCard.setCounterOfLikes(data.likes.length)
                 })
                 
@@ -52,7 +55,8 @@ function createCard(data) {
         handleCardDislike: () => {
             newApi.disLikeCard(newCard)
                 .then((data) => {
-                    newCard._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
+                    //newCard._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
+                    newCard.setDislike()
                     newCard.setCounterOfLikes(data.likes.length)})
 
                 .catch((err) => console.log(err))
@@ -69,6 +73,7 @@ const newPopupConfirm = new PopupConfirm({
     deleteSubmit: () => {
         newApi.deleteCard(cardToDelete)
             .then(() => {
+                
                 cardToDelete.delete();
                 console.log(cardToDelete);
                 newPopupConfirm.close();
@@ -93,11 +98,9 @@ const newPopupAvatar = new PopupWithForm({
     popupSelector: ".popup_avatar",
     formSubmit: (data) => {
 
-        //saveAvatarBtn.innerHTML = 'Сохранение...'
 
         renderLoading(saveAvatarBtn, 'Сохранение...');
 
-        //debugger
         
         newApi.editAvatar(data.avatar)
             .then((data) => {
@@ -146,7 +149,9 @@ const userInfo = new UserInfo({ name: profileName, about: profileJob, avatar: pr
 
 
 Promise.all([ newApi.getUSerInfoFromServer(), newApi.getCardsFromServer() ])
-.then((data)=>{ 
+.then((data)=>{
+
+    userId = data[0]._id;
     userInfo.setUserInfo(data[0]);
     console.log(data);
     cardsList.renderItems(data[1])
@@ -241,8 +246,10 @@ const newPopupCard = new PopupWithForm({
     formSubmit: (data) => {
 
         renderLoading(addCardSubmitBtn, 'Сохранение...');
+
         
-        newApi.postNewCard(popupPlace.value, popupLink.value)
+        
+        newApi.postNewCard(data.place, data.url)
             .then((data) => {
                 console.log(data);
                 cardsList.prependItem(createCard(data));

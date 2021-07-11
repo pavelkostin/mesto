@@ -58,6 +58,16 @@ export default class Card {
         }
     }
 
+    setLike() {
+        this._newTemplate.querySelector('.cards__like').classList.add('cards__like_active')
+    }
+
+    setDislike() {
+        this._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
+    }
+
+
+
     setCounterOfLikes(num) {
         this._newTemplate.querySelector('.cards__quantity-likes').textContent = num;
     }

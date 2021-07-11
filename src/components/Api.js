@@ -43,11 +43,14 @@ export default class Api {
     }
 
     postNewCard(name, link) {
+        
         return fetch(`${this._url}/cards`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
+                
                 name: name,
+                
                 link: link
             }),
         }).then(this._checkResponse);
