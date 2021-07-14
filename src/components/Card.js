@@ -75,8 +75,9 @@ export default class Card {
 
     //
     delete() {
-        this._newTemplate.remove()
-        this._newTemplate = null;
+        
+        this._element.remove()
+        this._element = null;
     }
 
 

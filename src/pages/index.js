@@ -2,15 +2,17 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import {
     popupName, popupJob, popupEditBtn, profileName, profileJob, profileAvatar,
-    popupAddCardBtn, popupEditForm, popupAddForm, validationArray, popupAvatarForm, popupLink, popupPlace, popupAvatarInput} from "../utils/constants.js";
+    popupAddCardBtn, popupEditForm, popupAddForm, validationArray, popupAvatarForm
+} from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupConfirm from "../components/PopupConfirm.js";
 import Api from "../components/Api.js";
 import FormValidation from "../components/FormValidation.js";
-import './index.css'; 
+import './index.css';
 
+
+let cardToDelete = null;
 
 
 // попап галлереи
@@ -27,7 +29,7 @@ const newApi = new Api({
 });
 
 // создание карточки
-let cardToDelete = null;
+
 let userId;
 
 function createCard(data) {
@@ -49,7 +51,7 @@ function createCard(data) {
                     newCard.setLike()
                     newCard.setCounterOfLikes(data.likes.length)
                 })
-                
+
                 .catch((err) => console.log(err))
         },
         handleCardDislike: () => {
@@ -57,7 +59,8 @@ function createCard(data) {
                 .then((data) => {
                     //newCard._newTemplate.querySelector('.cards__like').classList.remove('cards__like_active')
                     newCard.setDislike()
-                    newCard.setCounterOfLikes(data.likes.length)})
+                    newCard.setCounterOfLikes(data.likes.length)
+                })
 
                 .catch((err) => console.log(err))
         },
@@ -67,28 +70,32 @@ function createCard(data) {
 }
 
 
-// подтверждение удаления попап
-const newPopupConfirm = new PopupConfirm({
+// подтверждение удаления
+const newPopupConfirm = new PopupWithForm({
     popupSelector: '.popup_confirm',
-    deleteSubmit: () => {
+    formSubmit: () => {
         newApi.deleteCard(cardToDelete)
             .then(() => {
-                
                 cardToDelete.delete();
-                console.log(cardToDelete);
+
                 newPopupConfirm.close();
             })
+
             .catch(err => {
                 console.log(err);
             })
     }
 })
 
-newPopupConfirm.setEventListeners()
+newPopupConfirm.setEventListeners();
+
+
+
 
 const saveAvatarBtn = document.getElementById('popupSubmitAvatar')
 
 
+// загрузка
 function renderLoading(btnSelector, text) {
     btnSelector.innerHTML = text;
 }
@@ -101,7 +108,7 @@ const newPopupAvatar = new PopupWithForm({
 
         renderLoading(saveAvatarBtn, 'Сохранение...');
 
-        
+
         newApi.editAvatar(data.avatar)
             .then((data) => {
 
@@ -114,10 +121,10 @@ const newPopupAvatar = new PopupWithForm({
             .finally(() => {
                 renderLoading(saveAvatarBtn, 'Сохранить');
             })
-            
-            
+
+
     }
-            
+
 })
 
 newPopupAvatar.setEventListeners()
@@ -128,7 +135,7 @@ const avatarBtn = document.querySelector('.profile__avatar')
 avatarBtn.addEventListener('click', () => {
     editAvatarValidation.resetErrorInput()
     newPopupAvatar.open()
-    
+
 })
 
 
@@ -148,54 +155,18 @@ const cardsList = new Section(
 const userInfo = new UserInfo({ name: profileName, about: profileJob, avatar: profileAvatar });
 
 
-Promise.all([ newApi.getUSerInfoFromServer(), newApi.getCardsFromServer() ])
-.then((data)=>{
-
-    userId = data[0]._id;
-    userInfo.setUserInfo(data[0]);
-    console.log(data);
-    cardsList.renderItems(data[1])
-}) 
-.catch((err)=>{console.log(err)})
-
-
-// получить список карточек с сервера
-
-/* newApi.getCardsFromServer()
-    .then((cards) => {
-        const cardsList = new Section({
-            //items: cards,
-            renderer: card => {
-                cardsList.addItem(createCard(card))
-            }
-        }, ".cards__list")
-        cardsList.renderItems(cards)
-        console.log(cardsList);
-    })
-    .catch((err) => {
-        console.log(err);
-    }) */
-
-
-// получение данных юзера
-/* const userInfo = new UserInfo({ name: profileName, about: profileJob, avatar: profileAvatar });
-
-
-
-newApi.getUSerInfoFromServer()
-
+Promise.all([newApi.getUSerInfoFromServer(), newApi.getCardsFromServer()])
     .then((data) => {
-        userId = data._id;
-        //console.log(data);
-        userInfo.setUserInfo(data);
+
+        userId = data[0]._id;
+        userInfo.setUserInfo(data[0]);
+        console.log(data);
+        cardsList.renderItems(data[1])
     })
-    .catch((err) => {
-        console.log(err);
-    }) */
+    .catch((err) => { console.log(err) })
 
 
 // редактирование юзера
-
 const editUserSubmitBtn = document.querySelector('.popup__submit_edit-profile')
 
 const newPopupWithForm = new PopupWithForm({
@@ -216,7 +187,6 @@ const newPopupWithForm = new PopupWithForm({
                 renderLoading(editUserSubmitBtn, 'Сохранить');
             })
 
-        
     },
 });
 
@@ -230,7 +200,7 @@ popupEditBtn.addEventListener("click", () => {
 
     popupName.value = infoObject.name;
     popupJob.value = infoObject.about;
-    
+
     editProfileValidation.resetErrorInput()
     newPopupWithForm.open();
 });
@@ -247,8 +217,8 @@ const newPopupCard = new PopupWithForm({
 
         renderLoading(addCardSubmitBtn, 'Сохранение...');
 
-        
-        
+
+
         newApi.postNewCard(data.place, data.url)
             .then((data) => {
                 console.log(data);
@@ -262,7 +232,7 @@ const newPopupCard = new PopupWithForm({
                 renderLoading(addCardSubmitBtn, 'Сохранить');
             })
 
-        
+
     },
 });
 
@@ -272,7 +242,7 @@ popupAddCardBtn.addEventListener("click", (e) => {
     e.preventDefault();
     addCardValidation.resetErrorInput()
     newPopupCard.open();
-    
+
 });
 
 
